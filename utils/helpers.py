@@ -86,3 +86,22 @@ def preprocess_time_columns(df, time_column):
         df.loc[mask, 'PartOfDay'] = labels[i]
 
     return df
+
+
+def calculate_attendance_time(df):
+    """Calculates the attendance time in minutes and adds a new column
+    to the DataFrame.
+
+    Args:
+        df (pandas.DataFrame): The input DataFrame.
+
+    Returns:
+        pandas.DataFrame: The modified DataFrame with the new column.
+    """
+    # Calculate the attendance time in minutes
+    df['FirstPumpArriving_AttendanceTime_min'] = (
+        df['FirstPumpArriving_AttendanceTime'] / 60
+    )
+
+    # Return the modified DataFrame
+    return df
