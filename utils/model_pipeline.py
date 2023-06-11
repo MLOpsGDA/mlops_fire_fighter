@@ -65,7 +65,7 @@ def get_pipeline(
         verbose=False
     )
     cap_national_cost = CappingTransformer(
-        capping_values={'Notional Cost (£)': [0, 400]}
+        capping_values={'NotionalCost': [0, 400]}
     )
     PartOfDay_transformer = NominalToIntegerTransformer(
         columns=cat_features,
