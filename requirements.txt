@@ -66,3 +66,5 @@ tzdata==2023.3
 urllib3==2.0.2
 wcwidth==0.2.6
 xgboost==1.7.5
+fastapi==0.96.1
+uvicorn==0.22.0
