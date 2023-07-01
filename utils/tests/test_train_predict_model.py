@@ -31,7 +31,7 @@ def test_train_model(sample_pipeline, sample_dataset):
 
 def test_predict_model(sample_pipeline, sample_dataset):
     _, X_test, _, y_test = sample_dataset
-    model = train_model(sample_pipeline, X_test, y_test) 
+    model = train_model(sample_pipeline, X_test, y_test)
     evaluation = predict_model(model, X_test, y_test)
 
     assert evaluation == evaluation
