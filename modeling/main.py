@@ -114,5 +114,5 @@ best_model = train_model(
 )
 
 pickle_out = open('../mlops_fire_fighter/api/best_model.pkl', 'wb')
-pickle.dump(pipe, pickle_out)
+pickle.dump(best_model, pickle_out)
 pickle_out.close()
