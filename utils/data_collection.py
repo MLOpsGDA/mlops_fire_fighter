@@ -28,5 +28,5 @@ def download_blob_to_file(blob_service_client: BlobServiceClient, container_name
         sample_blob.write(download_stream.readall())
 
 
-download_blob_to_file(blob_service_client, CONTAINER_NAME, "LFB Mobilisation data from January 2009.zip")
-upload_file_to_blob(blob_service_client, CONTAINER_NAME, 'requirements.txt')
+#download_blob_to_file(blob_service_client, CONTAINER_NAME, "LFB Mobilisation data from January 2009.zip")
+#upload_file_to_blob(blob_service_client, CONTAINER_NAME, 'requirements.txt')
