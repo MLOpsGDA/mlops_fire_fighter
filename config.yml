@@ -1,3 +1,6 @@
 data:
   account_url: https://firefighterdata.blob.core.windows.net
   azure_container_name: data
+  path_old_data: oldies/
+  current_table: currently_used_table.parquet
+  online_address: https://data.london.gov.uk/download/london-fire-brigade-incident-records/f5066d66-c7a3-415f-9629-026fbda61822/LFB%20Incident%20data%20Last%203%20years.csv
