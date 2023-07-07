@@ -74,7 +74,7 @@ def preprocess_time_columns(df, time_column):
         (pd.to_datetime('00:00:00').time(), pd.to_datetime('04:59:59').time()),
         (pd.to_datetime('05:00:00').time(), pd.to_datetime('11:59:59').time()),
         (pd.to_datetime('12:00:00').time(), pd.to_datetime('16:59:59').time()),
-        (pd.to_datetime('17:00:00').time(), pd.to_datetime('20:59:59').time())
+        (pd.to_datetime('17:00:00').time(), pd.to_datetime('23:59:59').time())
     ]
     labels = ['Night', 'Morning', 'Afternoon', 'Evening']
 
