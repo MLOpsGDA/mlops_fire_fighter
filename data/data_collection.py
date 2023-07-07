@@ -52,6 +52,15 @@ def new_data_check():
         print('New data uploaded')
 
 def preprocess_df(df: pd.DataFrame) -> pd.DataFrame :
+    '''Applies the different preprocessing functions to the 
+    pandas DF.
+
+    Args:
+        - df: input dataframe
+    
+    Returns:
+        A pd DataFrame
+    '''
     df = preprocess_date_columns(df, 'DateOfCall')
     df = preprocess_time_columns(df, 'TimeOfCall')
     df = calculate_attendance_time(df)
@@ -62,6 +71,10 @@ def preprocess_df(df: pd.DataFrame) -> pd.DataFrame :
 
 
 def make_train_test():
+    """Checks if new data is available on the webpage, and
+    saves (overwrites) it to our blob storage if this is the
+    case. Moves the old data to the ``/oldies/`` directory
+    """
     df = pd.read_parquet(BytesIO(container_client.download_blob(DATA_PATH).readall()))
 
     training_table = preprocess_df(df)
@@ -75,11 +88,6 @@ def make_train_test():
     train.drop(['DateOfCall', 'datediff'], axis=1).to_pickle('train.pkl')
 
     return train, test
-
-
-#download_blob_to_file(blob_service_client, CONTAINER_NAME, "LFB Mobilisation data from January 2009.zip")
-#upload_file_to_blob(blob_service_client, CONTAINER_NAME, 'requirements.txt')
-#new_data_check()
 
 if __name__ == '__main__':
     new_data_check()
