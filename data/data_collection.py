@@ -6,13 +6,16 @@ import sys
 import yaml
 import pandas as pd
 
+root_path = os.path.abspath(os.path.join(os.getcwd(), '.'))
+sys.path.append(root_path)
+
 from utils.helpers import (preprocess_date_columns,
                            preprocess_time_columns,
                            calculate_attendance_time)
 
 # Don't forget to run ``az login`` in the command prompt and authenticate!
 
-with open("../config.yml", "r") as f:
+with open("./config.yml", "r") as f:
     config = yaml.safe_load(f)
 
 ACCOUNT_URL = config['data']['account_url']
@@ -26,38 +29,6 @@ default_credential = DefaultAzureCredential()
 blob_service_client = BlobServiceClient(ACCOUNT_URL, credential=default_credential)
 container_client = blob_service_client.get_container_client(CONTAINER_NAME)
 
-
-def upload_file_to_blob(blob_service_client: BlobServiceClient, container_name: str, filepath: str):
-    """Upload a file to our blob storage
-
-    Args:
-        blob_service_client: an authenticated blob service client object.
-        Run ``az login`` in the terminal to authenticate
-        container_name: the name of our container
-        filepath: path of the file to upload. Bear in mind that it will have
-        the same name in the blob storage
-    """
-
-    blob_client = blob_service_client.get_blob_client(container=container_name, blob=filepath)
-    with open(filepath, "rb") as data:
-      blob_client.upload_blob(data, overwrite=True)
-      print(f"Uploaded {filepath}.")
-
-
-def download_blob_to_file(blob_service_client: BlobServiceClient, container_name: str, filename: str):
-    """Download a file from our blob storage
-
-    Args:
-        blob_service_client: an authenticated blob service client object.
-        Run ``az login`` in the terminal to authenticate
-        container_name: the name of our container
-        filename: path of the file to download. Bear in mind that the following code will 
-        download it in the data/ directory 
-    """
-    blob_client = blob_service_client.get_blob_client(container=container_name, blob=filename)
-    with open("data/" + filename, mode="wb") as sample_blob:
-        download_stream = blob_client.download_blob()
-        sample_blob.write(download_stream.readall())
 
 def new_data_check():
     """Checks and if necessary updates the training tables in blob storage
