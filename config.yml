@@ -4,3 +4,5 @@ data:
   path_old_data: oldies/
   current_table: newest_table.parquet
   online_address: https://data.london.gov.uk/download/london-fire-brigade-incident-records/f5066d66-c7a3-415f-9629-026fbda61822/LFB%20Incident%20data%20Last%203%20years.csv
+  local_train_data: data/train.pkl
+  local_test_data: data/test.pkl
