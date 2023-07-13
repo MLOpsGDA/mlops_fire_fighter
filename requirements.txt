@@ -32,7 +32,7 @@ nest-asyncio
 numpy
 openpyxl
 packaging
-pandas
+pandas==1.5.3
 parso
 pathspec
 pexpect
@@ -70,3 +70,9 @@ fastapi
 uvicorn
 pytest
 requests
+azure-cli==2.43.0
+azure-identity==1.12.0
+azure-storage-blob==12.12.0
+azure-keyvault-secrets==4.7.0
+pyyaml==6.0
+pyarrow==12.0.1
