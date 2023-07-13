@@ -74,7 +74,9 @@ def preprocess_df(df: pd.DataFrame) -> pd.DataFrame:
     df = preprocess_date_columns(df, 'DateOfCall')
     df = preprocess_time_columns(df, 'TimeOfCall')
     df = calculate_attendance_time(df)
+    df['NationalCost'] = df['Notional Cost (£)']
 
+    df.drop(columns='Notional Cost (£)', inplace=True)
     df.dropna(subset=['FirstPumpArriving_AttendanceTime_min'], inplace=True)
 
     return df
