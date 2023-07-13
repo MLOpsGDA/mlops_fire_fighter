@@ -49,8 +49,8 @@ def new_data_check():
     ):
 
         old_dates = pd.to_datetime(currently_used_records['DateOfCall'])
-        date_min, date_max = old_dates.min().strftime('%Y-%m-%d'),
-        old_dates.max().strftime('%Y-%m-%d')
+        date_min = old_dates.min().strftime('%Y-%m-%d')
+        date_max = old_dates.max().strftime('%Y-%m-%d')
 
         container_client.upload_blob(
             f'{OLD_DATA_PATH}table_{date_min}-{date_max}.parquet',
